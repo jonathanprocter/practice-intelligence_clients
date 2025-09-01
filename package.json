@@ -11,8 +11,13 @@
     "db:push": "drizzle-kit push",
     "db:migrate": "drizzle-kit generate && drizzle-kit migrate",
     "db:fix": "psql $DATABASE_URL -f create_missing_tables.sql",
-    "diagnose": "tsx diagnostic_and_fix.ts",
-    "test:db": "tsx diagnostic_and_fix.ts"
+    "diagnose": "node diagnostic_and_fix.js",
+    "test:db": "node diagnostic_and_fix.js",
+    "test:system": "node test-system.js",
+    "fix:oauth": "node fix-oauth.js",
+    "migrate": "node migrate-database.js",
+    "setup": "npm run migrate && npm run fix:oauth",
+    "test": "npm run test:system"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.37.0",
