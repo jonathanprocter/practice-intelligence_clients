@@ -1,12 +1,16 @@
 #!/usr/bin/env node
 import 'dotenv/config';
-import { Pool } from '@neondatabase/serverless';
+import { Pool, neonConfig } from '@neondatabase/serverless';
+import ws from 'ws';
 import chalk from 'chalk';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import fetch from 'node-fetch';
+
+// Configure WebSocket for Neon
+neonConfig.webSocketConstructor = ws;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
